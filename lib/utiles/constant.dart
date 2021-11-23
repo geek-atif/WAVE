@@ -1,9 +1,6 @@
-import 'package:google_maps_flutter/google_maps_flutter.dart';
-
 class Constant {
-  static String baseUrl = "http://140.238.162.69/api/";
-  static String imageURL =
-      "https://res.cloudinary.com/casinotable/image/upload/v";
+  static String baseUrl = "";
+  static String imageURL = "";
   static const USER_ID = 'userID';
   static const USER_EMAIL = 'userEmail';
   static const USER_NAME = 'userName';

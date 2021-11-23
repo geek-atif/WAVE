@@ -1,10 +1,7 @@
-import 'package:firebase_core/firebase_core.dart';
-import 'package:wave/utiles/my_singleton.dart';
+import 'package:wave/ui/widgets/light_text_head.dart';
 import '../../ui/styles/my_app_theme.dart';
-import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'dart:async';
 import 'package:get/get.dart';
 import '../routers/my_router.dart';
@@ -34,29 +31,30 @@ class _SplashScreenState extends State<SplashScreen> {
       const SystemUiOverlayStyle(statusBarColor: MyAppTheme.appBarColor),
     );
 
-    var android =
-        const AndroidInitializationSettings('mipmap/app_notification');
-    var ios = const IOSInitializationSettings();
-    firebaseCloudMessaging_Listeners();
+    // var android =
+    //     const AndroidInitializationSettings('mipmap/app_notification');
+    // var ios = const IOSInitializationSettings();
+    // firebaseCloudMessaging_Listeners();
     _startTime();
   }
 
-  void firebaseCloudMessaging_Listeners() async {
-    await Firebase.initializeApp();
-    FirebaseMessaging _firebaseMessaging = FirebaseMessaging.instance;
-    FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
-        FlutterLocalNotificationsPlugin();
-    _firebaseMessaging.getToken().then((token) {
-      print("token : ${token}");
-      MySingleton.shared.deviceToken = token!;
-    });
-  }
+  // void firebaseCloudMessaging_Listeners() async {
+  //   await Firebase.initializeApp();
+  //   FirebaseMessaging _firebaseMessaging = FirebaseMessaging.instance;
+  //   FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
+  //       FlutterLocalNotificationsPlugin();
+  //   _firebaseMessaging.getToken().then((token) {
+  //     print("token : ${token}");
+  //     MySingleton.shared.deviceToken = token!;
+  //   });
+  // }
 
   @override
   Widget build(BuildContext context) {
     final screenSize = MediaQuery.of(context).size;
     return SafeArea(
       child: Scaffold(
+        backgroundColor: MyAppTheme.black,
         body: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           mainAxisSize: MainAxisSize.max,
@@ -66,7 +64,7 @@ class _SplashScreenState extends State<SplashScreen> {
             ),
             Container(
               alignment: Alignment.center,
-              child: Text('welcome'.tr),
+              child: LightTextHead(data: 'welcome'.tr),
             ),
             SizedBox(
               height: screenSize.height * 0.01,

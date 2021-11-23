@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_utils/src/extensions/internacionalization.dart';
+import 'package:wave/ui/styles/my_app_theme.dart';
+import 'package:wave/ui/widgets/light_text_head.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -13,8 +15,9 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        backgroundColor: MyAppTheme.black,
         body: Center(
-          child: Text('home'.tr),
+          child: LightTextHead(data: 'home'.tr),
         ),
       ),
     );
