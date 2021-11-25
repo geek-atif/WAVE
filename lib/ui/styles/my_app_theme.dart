@@ -85,6 +85,11 @@ class MyAppTheme {
   //static const Color dividedCol = Color(0xFFC4C4C4);
   static const Color ratingCol = Color(0xFFEDE14C);
 
+  //add by #####
+  static const backgroundColor = Color(0xFF2A7CCA);
+  static const buttonColor = Color(0xFF0045FF);
+  static const text_Color = Color(0xFF194D8C);
+
   static final ThemeData lightTheme = ThemeData(
     scaffoldBackgroundColor: appBackgroundColor,
     splashColor: primaryColor,

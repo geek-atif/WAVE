@@ -1,3 +1,4 @@
+import 'package:wave/ui/styles/my_images.dart';
 import 'package:wave/ui/widgets/light_text_head.dart';
 import '../../ui/styles/my_app_theme.dart';
 import 'package:flutter/material.dart';
@@ -18,18 +19,22 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 
   void navigationToWelcomeScreen() {
-    try {} on Exception catch (e) {
+    try {
+     // Get.toNamed(MyRouter.loginScreen);
+      Navigator.pushReplacementNamed(context, MyRouter.loginScreen);
+    } on Exception catch (e) {
       e.printError();
-      Get.toNamed(MyRouter.homeScreen);
     }
   }
 
   @override
   void initState() {
+    SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: []);
     super.initState();
     SystemChrome.setSystemUIOverlayStyle(
-      const SystemUiOverlayStyle(statusBarColor: MyAppTheme.appBarColor),
+      const SystemUiOverlayStyle(statusBarColor: MyAppTheme.backgroundColor),
     );
+
 
     // var android =
     //     const AndroidInitializationSettings('mipmap/app_notification');
@@ -54,23 +59,31 @@ class _SplashScreenState extends State<SplashScreen> {
     final screenSize = MediaQuery.of(context).size;
     return SafeArea(
       child: Scaffold(
-        backgroundColor: MyAppTheme.black,
-        body: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          mainAxisSize: MainAxisSize.max,
-          children: <Widget>[
-            SizedBox(
-              height: screenSize.height * 0.01,
-            ),
-            Container(
-              alignment: Alignment.center,
-              child: LightTextHead(data: 'welcome'.tr),
-            ),
-            SizedBox(
-              height: screenSize.height * 0.01,
-            ),
-          ],
-        ),
+
+        body: Container(
+          decoration: const BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage(MyImages.splash),
+                fit: BoxFit.cover,
+              )),
+        )
+        // Column(
+        //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        //   mainAxisSize: MainAxisSize.max,
+        //   children: <Widget>[
+        //
+        //     SizedBox(
+        //       height: screenSize.height * 0.01,
+        //     ),
+        //     Container(
+        //       alignment: Alignment.center,
+        //       child: LightTextHead(data: 'welcome'.tr),
+        //     ),
+        //     SizedBox(
+        //       height: screenSize.height * 0.01,
+        //     ),
+        //   ],
+        // ),
       ),
     );
   }
