@@ -7,14 +7,14 @@ import 'package:wave/ui/widgets/light_text_head.dart';
 import 'package:wave/ui/widgets/light_text_sub_head.dart';
 import 'package:wave/utiles/constant.dart';
 
-class AboutUsFirst extends StatefulWidget{
-  const AboutUsFirst({Key? key}) : super(key: key);
+class AboutUsContent extends StatefulWidget{
+  const AboutUsContent({Key? key}) : super(key: key);
 
   @override
-  State<AboutUsFirst> createState() => _AboutUsFirstState();
+  State<AboutUsContent> createState() => _AboutUsContentState();
 }
 
-class _AboutUsFirstState extends State<AboutUsFirst> {
+class _AboutUsContentState extends State<AboutUsContent> {
 
   @override
   void initState() {

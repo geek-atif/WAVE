@@ -10,7 +10,7 @@ import 'package:wave/ui/widgets/light_text_body.dart';
 import 'package:wave/ui/widgets/light_text_body_black.dart';
 import 'package:wave/utiles/constant.dart';
 
-import 'forgotpassword_screen.dart';
+
 
 class Login extends StatefulWidget {
   const Login({Key? key}) : super(key: key);
@@ -53,8 +53,7 @@ class _LoginState extends State<Login> {
                 padding: const EdgeInsets.fromLTRB(20, 60, 20, 20),
                 child: TextFormField(
                   style: const TextStyle(
-                      color: Colors.grey,
-                      fontFamily: 'Opensans',
+                      color: MyAppTheme.textColor,
                       fontWeight: FontWeight.normal,
                       fontSize: 14),
                   obscureText: false,
