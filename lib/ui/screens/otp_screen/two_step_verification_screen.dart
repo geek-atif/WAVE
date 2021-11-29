@@ -78,6 +78,9 @@ class _TwoStepVerificationState extends State<TwoStepVerification> {
                      child: PinEntryTextField(
                        showFieldAsBox: true,
                        isTextObscure: false,
+
+
+
                        fields: 6,
                        onSubmit: (text) {
                         // smsOTP = text as String;

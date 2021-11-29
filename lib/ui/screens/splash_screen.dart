@@ -1,5 +1,4 @@
 import 'package:wave/ui/styles/my_images.dart';
-import 'package:wave/ui/widgets/light_text_head.dart';
 import 'package:wave/utiles/utility.dart';
 import '../../ui/styles/my_app_theme.dart';
 import 'package:flutter/material.dart';
