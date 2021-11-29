@@ -81,7 +81,7 @@ class _TwoStepVerificationState extends State<TwoStepVerification> {
 
 
 
-                       fields: 6,
+                       fields: 4,
                        onSubmit: (text) {
                         // smsOTP = text as String;
                        },
