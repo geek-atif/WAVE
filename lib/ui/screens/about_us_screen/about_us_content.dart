@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:get/get_utils/src/extensions/internacionalization.dart';
 import 'package:wave/ui/styles/my_app_theme.dart';
 import 'package:wave/ui/styles/my_images.dart';
 import 'package:wave/ui/widgets/light_text_body.dart';
@@ -41,8 +42,8 @@ class _AboutUsContentState extends State<AboutUsContent> {
              SizedBox(
                height: screenSize.height * 0.02,
              ),
-             const LightTextHead(
-               data: Constant.HI,
+               LightTextHead(
+               data: 'hi'.tr,
              ),
              SizedBox(
                height: screenSize.height * 0.10,
@@ -56,8 +57,8 @@ class _AboutUsContentState extends State<AboutUsContent> {
              SizedBox(
                height: screenSize.height * 0.05,
              ),
-             const LightTextSubHead(
-               data: Constant.ABOUT_US,
+               LightTextSubHead(
+               data: 'about_us'.tr,
              ),
 
              SizedBox(

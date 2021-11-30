@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/src/extension_navigation.dart';
 import 'package:get/get_utils/src/extensions/dynamic_extensions.dart';
+import 'package:get/get_utils/src/extensions/internacionalization.dart';
 import 'package:wave/ui/routers/my_router.dart';
 import 'package:wave/ui/styles/my_app_theme.dart';
 import 'package:wave/ui/widgets/custom_button.dart';
@@ -61,7 +62,7 @@ class _LoginState extends State<Login> {
                   decoration: InputDecoration(
                     filled: true,
                     fillColor: MyAppTheme.textWhite,
-                    hintText: Constant.USER_EMAIL,
+                    hintText: 'user_email'.tr,
                     prefixIcon: const Icon(
                       Icons.email_outlined,
                       color: MyAppTheme.textColor,
@@ -92,7 +93,7 @@ class _LoginState extends State<Login> {
                   decoration: InputDecoration(
                     filled: true,
                     fillColor: MyAppTheme.textWhite,
-                    hintText: Constant.USER_PASSWORD,
+                    hintText: 'user_password'.tr,
                     prefixIcon: const Icon(
                       Icons.lock_outline,
                       color: MyAppTheme.textColor,
@@ -120,8 +121,8 @@ class _LoginState extends State<Login> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    const LightTextBody(
-                      data: Constant.FACE_ID,
+                      LightTextBody(
+                      data: 'face_id'.tr,
                     ),
                     const SizedBox(
                       width: 5,
@@ -150,14 +151,14 @@ class _LoginState extends State<Login> {
                         e.printError();
                       }
                     },
-                    child: const LightTextBodyBlack(
-                        data: Constant.FORGOT_PASSWORD),
+                    child:   LightTextBodyBlack(
+                        data: 'forgot_password'.tr+'?'),
                   ),
                   SizedBox(
                     height: screenSize.height * 0.03,
                   ),
                   CustomButton(
-                    Constant.USER_LOGIN,
+                   'user_login'.tr,
                     54,
                     onPressed: () {
                       print('click me');

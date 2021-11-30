@@ -1,4 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:get/get_navigation/src/extension_navigation.dart';
+import 'package:get/get_utils/src/extensions/dynamic_extensions.dart';
+import 'package:get/get_utils/src/extensions/internacionalization.dart';
+import 'package:wave/ui/routers/my_router.dart';
 import 'package:wave/ui/styles/my_app_theme.dart';
 import 'package:wave/ui/styles/my_images.dart';
 import 'package:wave/ui/widgets/custom_button.dart';
@@ -30,8 +35,8 @@ class _AddFriendsScreenState extends State<AddFriendsScreen> {
             SizedBox(
               height: screenSize.height * 0.07,
             ),
-            const LightTextHead(
-              data: Constant.ADD_FRIENDS,
+            LightTextHead(
+              data: 'add_friend'.tr,
             ),
             SizedBox(
               height: screenSize.height * 0.05,
@@ -40,105 +45,79 @@ class _AddFriendsScreenState extends State<AddFriendsScreen> {
               child: ListView(
                 children: [
                   ListTile(
-                    leading: CustomCircle(
-                      MyImages.logo,
-                      key: _unqKey,
-                    ),
-                    title: const LightTextBody(
-                      data: Constant.PERSON_NAME,
-                    ),
-                    trailing:     CustomFloatingButton( Constant.ADD, key: _unqKey,)
+                      leading: CustomCircle(
+                        MyImages.logo,
+                        key: _unqKey,
+                      ),
+                      title: LightTextBody(
+                        data: 'person_name'.tr,
+                      ),
+                      trailing: CustomFloatingButton(
+                        'add'.tr,
+                        key: _unqKey,
+                      )),
+                  SizedBox(
+                    height: screenSize.height * 0.01,
                   ),
-                  SizedBox(height: screenSize.height * 0.01,),
                   ListTile(
-                    leading: CustomCircle(
-                      MyImages.logo,
-                      key: _unqKey,
-                    ),
-                    title: const LightTextBody(
-                      data: Constant.PERSON_NAME,
-                    ),
-                    trailing:     CustomFloatingButton( Constant.ADD, key: _unqKey,)
+                      leading: CustomCircle(
+                        MyImages.logo,
+                        key: _unqKey,
+                      ),
+                      title: LightTextBody(
+                        data: 'person_name'.tr,
+                      ),
+                      trailing: CustomFloatingButton(
+                        'add'.tr,
+                        key: _unqKey,
+                      )),
+                  SizedBox(
+                    height: screenSize.height * 0.01,
                   ),
-                  SizedBox(height: screenSize.height * 0.01,),
                   ListTile(
-                    leading: CustomCircle(
-                      MyImages.logo,
-                      key: _unqKey,
-                    ),
-                    title: const LightTextBody(
-                      data: Constant.PERSON_NAME,
-                    ),
-                    trailing:     CustomFloatingButton( Constant.ADD, key: _unqKey,)
+                      leading: CustomCircle(
+                        MyImages.logo,
+                        key: _unqKey,
+                      ),
+                      title: LightTextBody(
+                        data: 'person_name'.tr,
+                      ),
+                      trailing: CustomFloatingButton(
+                        'add'.tr,
+                        key: _unqKey,
+                      )),
+                  SizedBox(
+                    height: screenSize.height * 0.01,
                   ),
-                  SizedBox(height: screenSize.height * 0.01,),
                   ListTile(
-                    leading: CustomCircle(
-                      MyImages.logo,
-                      key: _unqKey,
-                    ),
-                    title: const LightTextBody(
-                      data: Constant.PERSON_NAME,
-                    ),
-                    trailing:     CustomFloatingButton( Constant.ADD, key: _unqKey,)
+                      leading: CustomCircle(
+                        MyImages.logo,
+                        key: _unqKey,
+                      ),
+                      title: LightTextBody(
+                        data: 'person_name'.tr,
+                      ),
+                      trailing: CustomFloatingButton(
+                        'add'.tr,
+                        key: _unqKey,
+                      )),
+                  SizedBox(
+                    height: screenSize.height * 0.1,
                   ),
-                  SizedBox(height: screenSize.height * 0.01,),
-                  ListTile(
-                    leading: CustomCircle(
-                      MyImages.logo,
-                      key: _unqKey,
-                    ),
-                    title: const LightTextBody(
-                      data: Constant.PERSON_NAME,
-                    ),
-                    trailing:     CustomFloatingButton( Constant.ADD, key: _unqKey,)
-                  ),
-                  SizedBox(height: screenSize.height * 0.01,),
-                  ListTile(
-                    leading: CustomCircle(
-                      MyImages.logo,
-                      key: _unqKey,
-                    ),
-                    title: const LightTextBody(
-                      data: Constant.PERSON_NAME,
-                    ),
-                    trailing:     CustomFloatingButton( Constant.ADD, key: _unqKey,)
-                  ),
-                  SizedBox(height: screenSize.height * 0.01,),
-                  ListTile(
-                    leading: CustomCircle(
-                      MyImages.logo,
-                      key: _unqKey,
-                    ),
-                    title: const LightTextBody(
-                      data: Constant.PERSON_NAME,
-                    ),
-                    trailing:     CustomFloatingButton( Constant.ADD, key: _unqKey,)
-                  ),
-                  SizedBox(height: screenSize.height * 0.01,),
-                  ListTile(
-                    leading: CustomCircle(
-                      MyImages.logo,
-                      key: _unqKey,
-                    ),
-                    title: const LightTextBody(
-                      data: Constant.PERSON_NAME,
-                    ),
-                    trailing:     CustomFloatingButton( Constant.ADD, key: _unqKey,)
-                  ),
-
                 ],
               ),
-
             ),
-
             CustomButton(
-              Constant.CONTINUE,
+              'continue'.tr,
               54,
               onPressed: () {
+                try {
+                  Get.toNamed(MyRouter.homeScreen);
+                } on Exception catch (e) {
+                  e.printError();
+                }
               },
             ),
-
             SizedBox(
               height: screenSize.height * 0.05,
             ),

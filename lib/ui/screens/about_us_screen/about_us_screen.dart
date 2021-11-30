@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/src/extension_navigation.dart';
 import 'package:get/get_utils/src/extensions/dynamic_extensions.dart';
+import 'package:get/get_utils/src/extensions/internacionalization.dart';
 import 'package:wave/ui/routers/my_router.dart';
 import 'package:wave/ui/styles/my_app_theme.dart';
 import 'package:wave/ui/widgets/custom_button.dart';
@@ -156,7 +157,7 @@ class _AboutUsState extends State<AboutUs> {
                       SizedBox(
                         height: screenSize.height * 0.05,
                       ),
-                      CustomButton(Constant.CONTINUE, 54, onPressed: () {
+                      CustomButton('continue'.tr, 54, onPressed: () {
                         try {
                           Get.toNamed(MyRouter.createProfile);
                         } on Exception catch (e) {

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:get/get_utils/src/extensions/internacionalization.dart';
 import 'package:wave/ui/screens/login_screens/login_screen.dart';
 import 'package:wave/ui/screens/login_screens/signup_screen.dart';
 import 'package:wave/ui/styles/my_app_theme.dart';
@@ -62,19 +63,19 @@ class _LoginScreenState extends State<LoginScreen> {
               height: 100,
               child: AppBar(
                 backgroundColor: MyAppTheme.backgroundColor,
-                bottom: const TabBar(
+                bottom:   TabBar(
                   indicatorColor: Colors.white,
                   indicatorWeight: 2,
                   indicatorSize: TabBarIndicatorSize.label,
                   tabs: [
                     Tab(
                       child: LightTextSubHead(
-                        data: Constant.LOGIN_,
+                        data: 'login_'.tr,
                       ),
                     ),
                     Tab(
                       child: LightTextSubHead(
-                        data: Constant.SIGNUP_,
+                    data: 'signup_caps'.tr,
                       ),
                     ),
                   ],

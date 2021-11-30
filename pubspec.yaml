@@ -36,7 +36,7 @@ dependencies:
   #flutter_local_notifications: ^8.2.0
   #firebase_core: ^1.7.0
   #geolocator: ^7.6.2
-  image_picker: ^0.8.4+2
+  image_picker: ^0.8.4+4
   flutter_facebook_auth: ^3.5.2
   flutter_secure_storage: ^4.2.1
   #percent_indicator: ^3.4.0
@@ -49,7 +49,6 @@ dependencies:
   #carousel_slider: ^4.0.0
   #intl: ^0.17.0
   #flutter_stripe: ^2.0.2
-  pin_entry_text_field: ^0.1.4
   pinput: ^1.2.2
 
   # The following adds the Cupertino Icons font to your application.

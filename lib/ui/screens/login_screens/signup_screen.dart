@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/src/extension_navigation.dart';
 import 'package:get/get_utils/src/extensions/dynamic_extensions.dart';
+import 'package:get/get_utils/src/extensions/internacionalization.dart';
 import 'package:wave/ui/routers/my_router.dart';
 import 'package:wave/ui/styles/my_app_theme.dart';
 import 'package:wave/ui/styles/my_images.dart';
@@ -65,7 +66,7 @@ class _SignUpState extends State<SignUp> {
                   decoration: InputDecoration(
                     filled: true,
                     fillColor: MyAppTheme.textWhite,
-                    hintText: Constant.USER_EMAIL,
+                    hintText: 'user_email'.tr,
                     prefixIcon: const Icon(
                       Icons.email_outlined,
                       color: MyAppTheme.textColor,
@@ -99,7 +100,7 @@ class _SignUpState extends State<SignUp> {
                   decoration: InputDecoration(
                     filled: true,
                     fillColor: MyAppTheme.textWhite,
-                    hintText: Constant.USER_PASSWORD,
+                    hintText: 'user_password'.tr,
                     prefixIcon: const Icon(
                       Icons.lock_outline,
                       color: MyAppTheme.textColor,
@@ -133,7 +134,7 @@ class _SignUpState extends State<SignUp> {
                   decoration: InputDecoration(
                     filled: true,
                     fillColor: MyAppTheme.textWhite,
-                    hintText: Constant.RE_ENTER_PASSWORD,
+                    hintText: 're_enter_password'.tr,
                     prefixIcon: const Icon(
                       Icons.lock_outline,
                       color: MyAppTheme.textColor,
@@ -161,8 +162,8 @@ class _SignUpState extends State<SignUp> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    const LightTextBody(
-                      data: Constant.FACE_ID,
+                      LightTextBody(
+                      data: 'face_id'.tr,
                     ),
                     const SizedBox(
                       width: 5,
@@ -182,7 +183,7 @@ class _SignUpState extends State<SignUp> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   CustomButton(
-                    Constant.SIGNUP,
+                    'signup'.tr,
                     54,
                     onPressed: () {
                       try {

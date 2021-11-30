@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get_utils/src/extensions/internacionalization.dart';
 import 'package:wave/ui/styles/my_app_theme.dart';
 import 'package:wave/ui/widgets/custom_button.dart';
 import 'package:wave/ui/widgets/light_text_body.dart';
@@ -59,17 +60,17 @@ class _ForgotPasswordState extends State<ForgotPassword> {
               SizedBox(
                 height: screenSize.height * 0.05,
               ),
-              const LightTextHead(
-                data: Constant.FORGOT_PASSWORD_,
+                LightTextHead(
+                data: 'forgot_password'.tr+'?',
               ),
               SizedBox(
                 height: screenSize.height * 0.01,
               ),
-              const LightTextBody(
-                data: Constant.ENTER_EMAIL,
+                LightTextBody(
+                data: 'enter_email'.tr,
               ),
-              const LightTextBody(
-                data: Constant.YOUR_ACCOUNT,
+                LightTextBody(
+                data: 'your_account'.tr,
               ),
               SizedBox(
                 height: screenSize.height * 0.25,
@@ -78,7 +79,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
               SizedBox(
                 height: screenSize.height * 0.20,
               ),
-                CustomButton(Constant.SEND_LINK, 54, onPressed: () {
+                CustomButton('send_link'.tr, 54, onPressed: () {
                   print('click me');
                 },)
             ],
@@ -94,7 +95,6 @@ class _ForgotPasswordState extends State<ForgotPassword> {
       child: TextField(
         style: const TextStyle(
             color: Colors.grey,
-            fontFamily: 'Opensans',
             fontWeight: FontWeight.normal,
             fontSize: 14),
         obscureText: false,
@@ -102,7 +102,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
         decoration: InputDecoration(
           filled: true,
           fillColor: MyAppTheme.textWhite,
-          hintText: Constant.USER_EMAIL,
+          hintText:  'user_email'.tr,
           prefixIcon: const Icon(
             Icons.email_outlined,
             color: MyAppTheme.textColor,

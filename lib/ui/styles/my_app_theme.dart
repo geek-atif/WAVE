@@ -89,6 +89,7 @@ class MyAppTheme {
   static const backgroundColor = Color(0xFF2A7CCA);
   static const buttonColor = Color(0xFF0045FF);
   static const text_Color = Color(0xFF194D8C);
+  static const list_tiles_bg_Color = Color(0xFFC1DCF5);
 
   static final ThemeData lightTheme = ThemeData(
     scaffoldBackgroundColor: appBackgroundColor,
