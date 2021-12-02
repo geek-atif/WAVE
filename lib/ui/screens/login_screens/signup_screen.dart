@@ -6,11 +6,10 @@ import 'package:get/get_utils/src/extensions/internacionalization.dart';
 import 'package:wave/ui/routers/my_router.dart';
 import 'package:wave/ui/styles/my_app_theme.dart';
 import 'package:wave/ui/styles/my_images.dart';
-import 'package:wave/ui/widgets/custom_button.dart';
-import 'package:wave/ui/widgets/custom_checkbox.dart';
-import 'package:wave/ui/widgets/custom_dialog.dart';
-import 'package:wave/ui/widgets/light_text_body.dart';
-import 'package:wave/utiles/constant.dart';
+import 'package:wave/ui/widgets/button/custom_button.dart';
+import 'package:wave/ui/widgets/custom_widget/custom_checkbox.dart';
+import 'package:wave/ui/widgets/text/light_text_body.dart';
+
 
 class SignUp extends StatefulWidget {
   const SignUp({Key? key}) : super(key: key);

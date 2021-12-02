@@ -3,9 +3,9 @@ import 'package:flutter/services.dart';
 import 'package:get/get_utils/src/extensions/internacionalization.dart';
 import 'package:wave/ui/styles/my_app_theme.dart';
 import 'package:wave/ui/styles/my_images.dart';
-import 'package:wave/ui/widgets/light_text_body.dart';
-import 'package:wave/ui/widgets/light_text_head.dart';
-import 'package:wave/ui/widgets/light_text_sub_head.dart';
+import 'package:wave/ui/widgets/text/light_text_body.dart';
+import 'package:wave/ui/widgets/text/light_text_head.dart';
+import 'package:wave/ui/widgets/text/light_text_sub_head.dart';
 import 'package:wave/utiles/constant.dart';
 
 class AboutUsContent extends StatefulWidget{

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:wave/ui/styles/my_app_theme.dart';
 
-import 'light_text_body.dart';
+import '../text/light_text_body.dart';
 
 class CustomButton extends StatelessWidget {
   final String inputText;

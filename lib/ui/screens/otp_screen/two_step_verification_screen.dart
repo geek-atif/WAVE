@@ -1,16 +1,17 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/src/extension_navigation.dart';
 import 'package:get/get_utils/src/extensions/dynamic_extensions.dart';
 import 'package:get/get_utils/src/extensions/internacionalization.dart';
-import 'package:pinput/pin_put/pin_put.dart';
+import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:wave/ui/routers/my_router.dart';
 import 'package:wave/ui/styles/my_app_theme.dart';
-import 'package:wave/ui/widgets/custom_button.dart';
-import 'package:wave/ui/widgets/light_text_body.dart';
-import 'package:wave/ui/widgets/light_text_body_black.dart';
-import 'package:wave/ui/widgets/light_text_head.dart';
+import 'package:wave/ui/widgets/button/custom_button.dart';
+import 'package:wave/ui/widgets/text/light_text_body.dart';
+import 'package:wave/ui/widgets/text/light_text_body_black.dart';
+import 'package:wave/ui/widgets/text/light_text_head.dart';
 
 import 'package:wave/utiles/utility.dart';
 
@@ -22,24 +23,25 @@ class TwoStepVerification extends StatefulWidget {
 }
 
 class _TwoStepVerificationState extends State<TwoStepVerification> {
-  final TextEditingController _pinPutController = TextEditingController();
-  final FocusNode _pinPutFocusNode = FocusNode();
-
-  BoxDecoration get _pinPutDecoration {
-    return BoxDecoration(
-      border: Border.all(color: MyAppTheme.textWhite),
-      borderRadius: BorderRadius.circular(5.0),
-      color: MyAppTheme.textWhite,
-    );
-  }
+  final formKey = GlobalKey<FormState>();
+  TextEditingController textEditingController = TextEditingController();
+  StreamController<ErrorAnimationType>? errorController;
+  String currentText = "";
+  bool hasError = false;
 
   @override
   void initState() {
-    SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: []);
+    errorController = StreamController<ErrorAnimationType>();
     super.initState();
     SystemChrome.setSystemUIOverlayStyle(
       const SystemUiOverlayStyle(statusBarColor: MyAppTheme.backgroundColor),
     );
+  }
+
+  @override
+  void dispose() {
+    errorController!.close();
+    super.dispose();
   }
 
   @override
@@ -60,7 +62,6 @@ class _TwoStepVerificationState extends State<TwoStepVerification> {
                 SizedBox(
                   height: screenSize.height * 0.05,
                 ),
-
                 SizedBox(
                   height: screenSize.height * 0.05,
                 ),
@@ -77,264 +78,86 @@ class _TwoStepVerificationState extends State<TwoStepVerification> {
                   data: 'six_digit_code_'.tr,
                 ),
                 SizedBox(
-                  height: screenSize.height * 0.11,
+                  height: screenSize.height * 0.20,
                 ),
-                // Container(
-                //   margin: EdgeInsets.symmetric(horizontal: screenWidth > 600 ? screenWidth * 0.2 : 16),
-                //   padding: const EdgeInsets.all(16.0),
-                //
-                //
-                //   child: Column(
-                //     crossAxisAlignment: CrossAxisAlignment.center,
-                //     mainAxisAlignment: MainAxisAlignment.center,
-                //
-                //     children: [
-                //
-                //       Container(
-                //         margin: EdgeInsets.only(left: screenWidth * 0.025),
-                //         color: MyAppTheme.backgroundColor,
-                //         child: PinPut(
-                //           fieldsCount: 5,
-                //           //onSubmit: (String pin) => _showSnackBar(pin, context),
-                //           focusNode: _pinPutFocusNode,
-                //           controller: _pinPutController,
-                //           cursorColor: MyAppTheme.textWhite,
-                //
-                //           submittedFieldDecoration: _pinPutDecoration.copyWith(
-                //             borderRadius: BorderRadius.circular(5.0),
-                //           ),
-                //           selectedFieldDecoration: _pinPutDecoration,
-                //           followingFieldDecoration: _pinPutDecoration.copyWith(
-                //             borderRadius: BorderRadius.circular(5.0),
-                //             border: Border.all(
-                //               color: Colors.white.withOpacity(.5),
-                //             ),
-                //           ),
-                //         ),
-                //       ),
-                //
-                //       SizedBox(
-                //         height: screenHeight * 0.04,
-                //       ),
-                //
-                //     ],
-                //   ),
-                // ),
+                Form(
+                  key: formKey,
+                  child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 8.0, horizontal: 30),
+                      child: PinCodeTextField(
+                        appContext: context,
+                        pastedTextStyle: const TextStyle(
+                          color: MyAppTheme.textWhite,
+                          fontWeight: FontWeight.bold,
+                          backgroundColor: MyAppTheme.textWhite,
+                        ),
+                        backgroundColor: MyAppTheme.backgroundColor,
+                        length: 6,
+                        obscureText: false,
+                        obscuringCharacter: '*',
+                        // obscuringWidget: FlutterLogo(
+                        //   size: 24,
+                        // ),
+                        blinkWhenObscuring: true,
+                        animationType: AnimationType.fade,
+                        validator: (v) {
+                          if (v!.length < 3) {
+                            return "";
+                            // return "I'm from validator";
+                          } else {
+                            return null;
+                          }
+                        },
+                        pinTheme: PinTheme(
+                          shape: PinCodeFieldShape.box,
+                          borderRadius: BorderRadius.circular(5),
+                          borderWidth: 0.0,
+                          fieldHeight: 50,
+                          fieldWidth: 40,
+                          activeFillColor: MyAppTheme.textWhite,
+                          inactiveFillColor: MyAppTheme.textWhite,
+                          inactiveColor: MyAppTheme.textWhite,
+                          activeColor: MyAppTheme.textWhite,
+                          disabledColor: MyAppTheme.textWhite,
+                          errorBorderColor: MyAppTheme.textWhite,
+                        ),
+                        cursorColor: MyAppTheme.textWhite,
+                        animationDuration: const Duration(milliseconds: 300),
+                        enableActiveFill: true,
+                        errorAnimationController: errorController,
+                        controller: textEditingController,
+                        keyboardType: TextInputType.number,
 
-                Center(
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      SizedBox(
-                          height: screenSize.height * 0.12,
-                          width: screenSize.width * 0.12,
-                          child: TextField(
-                            textAlign: TextAlign.center,
-                            enableSuggestions: false,
-                            autocorrect: false,
-                            maxLength: 1,
-                            style: const TextStyle(
-                                decoration: TextDecoration.none,
-                                color: MyAppTheme.textSecondary,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 14 ),
-                            decoration: InputDecoration(
-                              counter: SizedBox.shrink(),
-                              border: InputBorder.none,
-                              filled: true,
-                              fillColor: MyAppTheme.textWhite,
-                              hintText: '-',
+                        onCompleted: (v) {
+                          print("Completed");
+                        },
 
-                              hintStyle: const TextStyle(fontSize: 18.0, color: MyAppTheme.textPrimary,fontWeight:FontWeight.bold ),
-                              focusedBorder: OutlineInputBorder(
-                                borderSide: BorderSide.none,
-                                borderRadius: BorderRadius.circular(10.0),
-                              ),
-                              enabledBorder: const OutlineInputBorder(
-                                  borderSide: BorderSide.none,
-                                  borderRadius: BorderRadius.all(
-                                      Radius.circular(10.0))),
-                            ),
-                          )),
-                      SizedBox(
-                        width: screenSize.width * 0.02,
-                      ),
-                      SizedBox(
-                          height: screenSize.height * 0.12,
-                          width: screenSize.width * 0.12,
-                          child: TextField(
-                            textAlign: TextAlign.center,
-                            enableSuggestions: false,
-                            autocorrect: false,
-                            maxLength: 1,
-                            style: const TextStyle(
-                                decoration: TextDecoration.none,
-                                color: MyAppTheme.textSecondary,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 14 ),
-                            decoration: InputDecoration(
-                              counter: SizedBox.shrink(),
-                              border: InputBorder.none,
-                              filled: true,
-                              fillColor: MyAppTheme.textWhite,
-                              hintText: '-',
-
-                              hintStyle: const TextStyle(fontSize: 18.0, color: MyAppTheme.textPrimary,fontWeight:FontWeight.bold ),
-                              focusedBorder: OutlineInputBorder(
-                                borderSide: BorderSide.none,
-                                borderRadius: BorderRadius.circular(10.0),
-                              ),
-                              enabledBorder: const OutlineInputBorder(
-                                  borderSide: BorderSide.none,
-                                  borderRadius: BorderRadius.all(
-                                      Radius.circular(10.0))),
-                            ),
-                          )),
-                      SizedBox(width: screenSize.width * 0.02,),
-                      SizedBox(
-                          height: screenSize.height * 0.12,
-                          width: screenSize.width * 0.12,
-                          child: TextField(
-                            textAlign: TextAlign.center,
-                            enableSuggestions: false,
-                            autocorrect: false,
-                            maxLength: 1,
-                            style: const TextStyle(
-                                decoration: TextDecoration.none,
-                                color: MyAppTheme.textSecondary,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 14 ),
-                            decoration: InputDecoration(
-                              counter: SizedBox.shrink(),
-                              border: InputBorder.none,
-                              filled: true,
-                              fillColor: MyAppTheme.textWhite,
-                              hintText: '-',
-
-                              hintStyle: const TextStyle(fontSize: 18.0, color: MyAppTheme.textPrimary,fontWeight:FontWeight.bold ),
-                              focusedBorder: OutlineInputBorder(
-                                borderSide: BorderSide.none,
-                                borderRadius: BorderRadius.circular(10.0),
-                              ),
-                              enabledBorder: const OutlineInputBorder(
-                                  borderSide: BorderSide.none,
-                                  borderRadius: BorderRadius.all(
-                                      Radius.circular(10.0))),
-                            ),
-                          )),
-                      SizedBox(
-                        width: screenSize.width * 0.02,
-                      ),
-                      SizedBox(
-                          height: screenSize.height * 0.12,
-                          width: screenSize.width * 0.12,
-                          child: TextField(
-                            textAlign: TextAlign.center,
-                            enableSuggestions: false,
-                            autocorrect: false,
-                            maxLength: 1,
-                            style: const TextStyle(
-                                decoration: TextDecoration.none,
-                                color: MyAppTheme.textSecondary,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 14 ),
-                            decoration: InputDecoration(
-                              counter: SizedBox.shrink(),
-                              border: InputBorder.none,
-                              filled: true,
-                              fillColor: MyAppTheme.textWhite,
-                              hintText: '-',
-
-                              hintStyle: const TextStyle(fontSize: 18.0, color: MyAppTheme.textPrimary,fontWeight:FontWeight.bold ),
-                              focusedBorder: OutlineInputBorder(
-                                borderSide: BorderSide.none,
-                                borderRadius: BorderRadius.circular(10.0),
-                              ),
-                              enabledBorder: const OutlineInputBorder(
-                                  borderSide: BorderSide.none,
-                                  borderRadius: BorderRadius.all(
-                                      Radius.circular(10.0))),
-                            ),
-                          )),
-                      SizedBox(
-                        width: screenSize.width * 0.02,
-                      ),
-                      SizedBox(
-                          height: screenSize.height * 0.12,
-                          width: screenSize.width * 0.12,
-                          child: TextField(
-                            textAlign: TextAlign.center,
-                            enableSuggestions: false,
-                            autocorrect: false,
-                            maxLength: 1,
-                            style: const TextStyle(
-                                decoration: TextDecoration.none,
-                                color: MyAppTheme.textSecondary,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 14 ),
-                            decoration: InputDecoration(
-                              counter: SizedBox.shrink(),
-                              border: InputBorder.none,
-                              filled: true,
-                              fillColor: MyAppTheme.textWhite,
-                              hintText: '-',
-
-                              hintStyle: const TextStyle(fontSize: 18.0, color: MyAppTheme.textPrimary,fontWeight:FontWeight.bold ),
-                              focusedBorder: OutlineInputBorder(
-                                borderSide: BorderSide.none,
-                                borderRadius: BorderRadius.circular(10.0),
-                              ),
-                              enabledBorder: const OutlineInputBorder(
-                                  borderSide: BorderSide.none,
-                                  borderRadius: BorderRadius.all(
-                                      Radius.circular(10.0))),
-                            ),
-                          )),
-                      SizedBox(
-                        width: screenSize.width * 0.02,
-                      ),
-                      SizedBox(
-                          height: screenSize.height * 0.12,
-                          width: screenSize.width * 0.12,
-                          child: TextField(
-                            textAlign: TextAlign.center,
-                            enableSuggestions: false,
-                            autocorrect: false,
-                            maxLength: 1,
-                            style: const TextStyle(
-                                decoration: TextDecoration.none,
-                                color: MyAppTheme.textSecondary,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 14 ),
-                            decoration: InputDecoration(
-                              counter: SizedBox.shrink(),
-                              border: InputBorder.none,
-                                filled: true,
-                                fillColor: MyAppTheme.textWhite,
-                                hintText: '-',
-
-                                hintStyle: const TextStyle(fontSize: 18.0, color: MyAppTheme.textPrimary,fontWeight:FontWeight.bold ),
-                                focusedBorder: OutlineInputBorder(
-                                  borderSide: BorderSide.none,
-                                  borderRadius: BorderRadius.circular(10.0),
-                                ),
-                                enabledBorder: const OutlineInputBorder(
-                                    borderSide: BorderSide.none,
-                                    borderRadius: BorderRadius.all(
-                                        Radius.circular(10.0))),
-                                ),
-                          )),
-                      SizedBox(
-                        width: screenSize.width * 0.01,
-                      ),
-                    ],
+                        onChanged: (value) {
+                          print(value);
+                          setState(() {
+                            currentText = value;
+                          });
+                        },
+                        beforeTextPaste: (text) {
+                          print("Allowing to paste $text");
+                          return true;
+                        },
+                      )),
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 30.0),
+                  child: Text(
+                    hasError ? 'enterCode'.tr : "",
+                    style: const TextStyle(
+                        color: MyAppTheme.textWhite,
+                        fontSize: 14,
+                        fontWeight: FontWeight.normal),
                   ),
                 ),
-
                 SizedBox(
-                  height: screenSize.height * 0.15,
+                  height: screenSize.height * 0.20,
                 ),
-
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
@@ -345,26 +168,42 @@ class _TwoStepVerificationState extends State<TwoStepVerification> {
                     SizedBox(
                       width: screenSize.height * 0.01,
                     ),
-                    LightTextBodyBlack(
-                      data: 'resend_code'.tr,
-                    ),
+                    TextButton(
+                      onPressed: () => Utility.snackBar(context, 'otpMsg'.tr),
+                      child: LightTextBodyBlack(
+                        data: 'resend_code'.tr,
+                      ),
+                    )
                   ],
                 ),
                 SizedBox(
                   height: screenSize.height * 0.05,
                 ),
-
                 InkWell(
-                    onTap: (){
-                      try {
-                        Get.toNamed(MyRouter.aboutUs);
-                      } on Exception catch (e) {
-                        e.printError();
+                    onTap: () {
+                      formKey.currentState!.validate();
+                      if (currentText.length != 6) {
+                        errorController!.add(ErrorAnimationType
+                            .shake); // Triggering error shake animation
+                        setState(() {
+                          hasError = true;
+                        });
+                      } else {
+                        setState(
+                          () {
+                            hasError = false;
+                            try {
+                              Get.toNamed(MyRouter.aboutUs);
+                            } on Exception catch (e) {
+                              e.printError();
+                            }
+                          },
+                        );
                       }
                     },
-                    child: CustomButton('continue'.tr, )),
-
-
+                    child: CustomButton(
+                      'continue'.tr,
+                    )),
               ],
             ),
           ),

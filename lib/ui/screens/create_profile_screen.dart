@@ -11,11 +11,10 @@ import 'package:image_picker/image_picker.dart';
 import 'package:wave/ui/routers/my_router.dart';
 import 'package:wave/ui/styles/my_app_theme.dart';
 import 'package:wave/ui/styles/my_images.dart';
-import 'package:wave/ui/widgets/custom_button.dart';
-import 'package:wave/ui/widgets/light_text_body.dart';
-import 'package:wave/ui/widgets/light_text_head.dart';
-import 'package:wave/ui/widgets/light_text_sub_head.dart';
-import 'package:wave/utiles/constant.dart';
+import 'package:wave/ui/widgets/button/custom_button.dart';
+import 'package:wave/ui/widgets/text/light_text_body.dart';
+import 'package:wave/ui/widgets/text/light_text_head.dart';
+import 'package:wave/ui/widgets/text/light_text_sub_head.dart';
 import 'package:wave/utiles/utility.dart';
 
 class CreateProfile extends StatefulWidget {
@@ -65,7 +64,7 @@ class _CreateProfileState extends State<CreateProfile> {
                   data: 'create_profile'.tr,
                 ),
                 SizedBox(
-                  height: screenSize.height * 0.10,
+                  height: screenSize.height * 0.05,
                 ),
                 imageProfile(context),
                 SizedBox(
@@ -111,9 +110,40 @@ class _CreateProfileState extends State<CreateProfile> {
                                   borderRadius: BorderRadius.circular(15.0)),
                             ),
                           ),
-                          SizedBox(
-                            height: screenSize.height * 0.02,
+                          SizedBox(height: screenSize.height * 0.02,),
+                          TextFormField(
+                            style: const TextStyle(
+                                color: MyAppTheme.textColor,
+                                fontWeight: FontWeight.normal,
+                                fontSize: 14),
+                            obscureText: false,
+
+                            decoration: InputDecoration(
+                              filled: true,
+                              fillColor: MyAppTheme.textWhite,
+                              hintText: 'ageRange'.tr,
+                              suffixIcon: Image.asset(MyImages.icDropDown),
+                              suffixIconConstraints: const BoxConstraints(
+                                minWidth: 30,
+                                minHeight: 30,
+                              ),
+                              focusedBorder: OutlineInputBorder(
+                                borderSide: const BorderSide(
+                                    color: MyAppTheme.textWhite),
+                                borderRadius: BorderRadius.circular(15.0),
+                              ),
+                              enabledBorder: const OutlineInputBorder(
+                                  borderSide:
+                                  BorderSide(color: MyAppTheme.textWhite),
+                                  borderRadius:
+                                  BorderRadius.all(Radius.circular(15.0))),
+                              border: OutlineInputBorder(
+                                  borderSide: const BorderSide(
+                                      color: MyAppTheme.textWhite, width: 2.0),
+                                  borderRadius: BorderRadius.circular(15.0)),
+                            ),
                           ),
+                          SizedBox(height: screenSize.height * 0.02,),
                           SizedBox(
                             height: 200,
                             child: TextFormField(
@@ -151,9 +181,8 @@ class _CreateProfileState extends State<CreateProfile> {
                         ],
                       )),
                 ),
-                SizedBox(
-                  height: screenSize.height * 0.05,
-                ),
+                SizedBox(height: screenSize.height * 0.05,),
+
                 InkWell(
                     onTap: () {
                       try {
@@ -202,23 +231,21 @@ class _CreateProfileState extends State<CreateProfile> {
   }
 
   getImageWidget() {
-
-      if (_imageFile != null) {
-        return    CircleAvatar(
-            backgroundColor: MyAppTheme.textWhite,
-            radius: 65,
-            child: CircleAvatar(
-              radius: 63.0,
-              backgroundImage: Image.file(_imageFile!).image,
-            ));
-      }  else{
-        return   const Icon(
-          Icons.person,
-          size: 120,
-          color: MyAppTheme.textWhite,
-        );
-      }
-
+    if (_imageFile != null) {
+      return CircleAvatar(
+          backgroundColor: MyAppTheme.textWhite,
+          radius: 65,
+          child: CircleAvatar(
+            radius: 63.0,
+            backgroundImage: Image.file(_imageFile!).image,
+          ));
+    } else {
+      return const Icon(
+        Icons.person,
+        size: 120,
+        color: MyAppTheme.textWhite,
+      );
+    }
   }
 
   void OpenSheet() {

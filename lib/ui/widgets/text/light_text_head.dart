@@ -1,6 +1,6 @@
-import '../styles/my_app_theme.dart';
+import '../../styles/my_app_theme.dart';
 import 'package:flutter/material.dart';
-import '../styles/fonts.dart';
+import '../../styles/fonts.dart';
 
 class LightTextHead extends StatelessWidget {
   final String data;

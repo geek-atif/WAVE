@@ -1,5 +1,5 @@
-import '../styles/fonts.dart';
-import '../styles/my_app_theme.dart';
+import '../../styles/fonts.dart';
+import '../../styles/my_app_theme.dart';
 import 'package:flutter/material.dart';
 
 class LightTextBody extends StatelessWidget {

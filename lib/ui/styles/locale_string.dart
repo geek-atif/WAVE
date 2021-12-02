@@ -22,6 +22,9 @@ class LocaleString extends Translations {
           'two_step_verification': '2 Step Verification',
           'six_digit_code': 'A 6-digit verification code',
           'six_digit_code_': 'was just send to ******@gmail.com',
+          'enterCode': '*Please enter code properly',
+
+
           'dont_receive': 'Don\'t receive a text?',
           'resend_code': 'Resend Code',
           'continue': 'Continue',
@@ -37,6 +40,17 @@ class LocaleString extends Translations {
           'choose_profile_pic': 'Choose Profile Photo',
           'camera': 'Camera',
           'gallery': 'Gallery',
+          'otpMsg': 'OTP resend!!',
+          'ageRange': 'Age Range',
+          'confirm': 'Confirm',
+
+          'changePsw': 'Change Password',
+          'code': 'Code',
+          'newPsw': 'New Password',
+          'confirmNewPsw': 'Confirm New Password',
+          'checkedBarName' :'Checked Bar Name',
+          'dateTime' :'12/02/21 2:00pm - 6:00pm'
+
 
         },
         //sp LANGUAGE

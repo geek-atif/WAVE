@@ -5,7 +5,7 @@ import 'package:wave/ui/screens/login_screens/login_screen.dart';
 import 'package:wave/ui/screens/login_screens/signup_screen.dart';
 import 'package:wave/ui/styles/my_app_theme.dart';
 import 'package:wave/ui/styles/my_images.dart';
-import 'package:wave/ui/widgets/light_text_sub_head.dart';
+import 'package:wave/ui/widgets/text/light_text_sub_head.dart';
 import 'package:wave/utiles/constant.dart';
 
 class LoginScreen extends StatefulWidget {
