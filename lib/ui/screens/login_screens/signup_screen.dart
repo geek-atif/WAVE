@@ -67,10 +67,7 @@ class _SignUpState extends State<SignUp> {
                     filled: true,
                     fillColor: MyAppTheme.textWhite,
                     hintText: 'user_email'.tr,
-                    prefixIcon: const Icon(
-                      Icons.email_outlined,
-                      color: MyAppTheme.textColor,
-                    ),
+                    prefixIcon:  Image.asset(MyImages.icMail),
                     focusedBorder: OutlineInputBorder(
                       borderSide: const BorderSide(color: MyAppTheme.textWhite),
                       borderRadius: BorderRadius.circular(15.0),
@@ -101,10 +98,7 @@ class _SignUpState extends State<SignUp> {
                     filled: true,
                     fillColor: MyAppTheme.textWhite,
                     hintText: 'user_password'.tr,
-                    prefixIcon: const Icon(
-                      Icons.lock_outline,
-                      color: MyAppTheme.textColor,
-                    ),
+                    prefixIcon:  Image.asset(MyImages.icPadlock),
                     focusedBorder: OutlineInputBorder(
                       borderSide: const BorderSide(color: MyAppTheme.textWhite),
                       borderRadius: BorderRadius.circular(15.0),
@@ -135,10 +129,7 @@ class _SignUpState extends State<SignUp> {
                     filled: true,
                     fillColor: MyAppTheme.textWhite,
                     hintText: 're_enter_password'.tr,
-                    prefixIcon: const Icon(
-                      Icons.lock_outline,
-                      color: MyAppTheme.textColor,
-                    ),
+                    prefixIcon:  Image.asset(MyImages.icPadlock),
                     focusedBorder: OutlineInputBorder(
                       borderSide: const BorderSide(color: MyAppTheme.textWhite),
                       borderRadius: BorderRadius.circular(15.0),
@@ -182,19 +173,19 @@ class _SignUpState extends State<SignUp> {
                 mainAxisAlignment: MainAxisAlignment.end,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  CustomButton(
-                    'signup'.tr,
-                    54,
-                    onPressed: () {
-                      try {
-                        Get.toNamed(MyRouter.twoStepVerification);
-                      } on Exception catch (e) {
-                        e.printError();
-                      }
 
-                     // displayDialog(context,MyImages.face_id);
-                    },
-                  )
+                  InkWell(
+                      onTap: (){
+                      try {
+                          Get.toNamed(MyRouter.twoStepVerification);
+                        } on Exception catch (e) {
+                          e.printError();
+                        }
+                      },
+                    child: CustomButton('signup'.tr,  ),
+                      ),
+
+
                 ],
               )
             ],

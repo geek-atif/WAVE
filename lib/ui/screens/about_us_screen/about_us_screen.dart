@@ -157,13 +157,16 @@ class _AboutUsState extends State<AboutUs> {
                       SizedBox(
                         height: screenSize.height * 0.05,
                       ),
-                      CustomButton('continue'.tr, 54, onPressed: () {
-                        try {
-                          Get.toNamed(MyRouter.createProfile);
-                        } on Exception catch (e) {
-                          e.printError();
-                        }
-                      },),
+                      InkWell(
+                          onTap: (){
+                            try {
+                              Get.toNamed(MyRouter.createProfile);
+                            } on Exception catch (e) {
+                              e.printError();
+                            }
+                          },
+                          child: CustomButton('continue'.tr, )),
+
 
                       SizedBox(
                         height: screenSize.height * 0.05,

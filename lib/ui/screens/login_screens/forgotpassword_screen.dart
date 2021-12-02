@@ -1,6 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:get/get_navigation/src/extension_navigation.dart';
 import 'package:get/get_utils/src/extensions/internacionalization.dart';
+import 'package:wave/ui/routers/my_router.dart';
 import 'package:wave/ui/styles/my_app_theme.dart';
 import 'package:wave/ui/widgets/custom_button.dart';
 import 'package:wave/ui/widgets/light_text_body.dart';
@@ -47,7 +50,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                   children: [
                     GestureDetector(
                       onTap: (){
-                        Navigator.of(context).pop(false);
+                        Get.back();
                       },
                       child:  const Icon(
                         Icons.arrow_back,
@@ -79,9 +82,13 @@ class _ForgotPasswordState extends State<ForgotPassword> {
               SizedBox(
                 height: screenSize.height * 0.20,
               ),
-                CustomButton('send_link'.tr, 54, onPressed: () {
-                  print('click me');
-                },)
+
+              InkWell(
+                  onTap: (){
+
+                  },
+                  child: CustomButton('send_link'.tr,  )),
+
             ],
           ),
         ),

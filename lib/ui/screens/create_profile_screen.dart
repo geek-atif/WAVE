@@ -27,7 +27,8 @@ class CreateProfile extends StatefulWidget {
 
 class _CreateProfileState extends State<CreateProfile> {
   final profile_formKey = GlobalKey<FormState>();
-  final ImagePicker _picker = ImagePicker();
+  var _picker;
+
   File? _imageFile;
 
   @override
@@ -37,6 +38,7 @@ class _CreateProfileState extends State<CreateProfile> {
     SystemChrome.setSystemUIOverlayStyle(
       const SystemUiOverlayStyle(statusBarColor: MyAppTheme.backgroundColor),
     );
+    _picker = ImagePicker();
   }
 
   @override
@@ -59,7 +61,7 @@ class _CreateProfileState extends State<CreateProfile> {
                 SizedBox(
                   height: screenSize.height * 0.02,
                 ),
-                  LightTextHead(
+                LightTextHead(
                   data: 'create_profile'.tr,
                 ),
                 SizedBox(
@@ -69,7 +71,7 @@ class _CreateProfileState extends State<CreateProfile> {
                 SizedBox(
                   height: screenSize.height * 0.01,
                 ),
-                  LightTextSubHead(
+                LightTextSubHead(
                   data: 'upload_profile'.tr,
                 ),
                 SizedBox(
@@ -152,17 +154,17 @@ class _CreateProfileState extends State<CreateProfile> {
                 SizedBox(
                   height: screenSize.height * 0.05,
                 ),
-                CustomButton(
-                  'continue'.tr,
-                  54,
-                  onPressed: () {
-                    try {
-                      Get.toNamed(MyRouter.addFriend);
-                    } on Exception catch (e) {
-                      e.printError();
-                    }
-                  },
-                ),
+                InkWell(
+                    onTap: () {
+                      try {
+                        Get.toNamed(MyRouter.addFriend);
+                      } on Exception catch (e) {
+                        e.printError();
+                      }
+                    },
+                    child: CustomButton(
+                      'continue'.tr,
+                    )),
               ],
             ),
           ),
@@ -193,7 +195,6 @@ class _CreateProfileState extends State<CreateProfile> {
       if (_imageFile == null) return;
 
       final imageTemporary = File(_imageFile.path);
-      this._imageFile = imageTemporary;
       setState(() => this._imageFile = imageTemporary);
     } on Exception catch (_, e) {
       print('Failed to pic image $e');
@@ -201,32 +202,23 @@ class _CreateProfileState extends State<CreateProfile> {
   }
 
   getImageWidget() {
-    if (_imageFile != null) {
-      Navigator.pop(context);
-      return CircleAvatar(
-        backgroundColor: MyAppTheme.textSecondary,
-        radius: 60,
-        child: CircleAvatar(
-          radius: 58.0,
-          backgroundImage: Image.file(_imageFile!).image,
-        ),
-      );
-    } else {
-      return const Icon(
-        Icons.person,
-        size: 120,
-        color: MyAppTheme.textWhite,
-      );
-      // return const CircleAvatar(
-      //     backgroundColor: Colors.grey,
-      //     radius: 60,
-      //     child: CircleAvatar(
-      //       radius: 58,
-      //       backgroundImage: AssetImage(MyImages
-      //               .ic_person //Convert File type of image to asset image path),
-      //           ),
-      //     ));
-    }
+
+      if (_imageFile != null) {
+        return    CircleAvatar(
+            backgroundColor: MyAppTheme.textWhite,
+            radius: 65,
+            child: CircleAvatar(
+              radius: 63.0,
+              backgroundImage: Image.file(_imageFile!).image,
+            ));
+      }  else{
+        return   const Icon(
+          Icons.person,
+          size: 120,
+          color: MyAppTheme.textWhite,
+        );
+      }
+
   }
 
   void OpenSheet() {
@@ -237,16 +229,19 @@ class _CreateProfileState extends State<CreateProfile> {
   }
 
   bottomSheet(BuildContext context) {
+    final screenSize = MediaQuery.of(context).size;
     return Container(
-      color:  MyAppTheme.backgroundColor,
+      color: MyAppTheme.backgroundColor,
       height: 100.0,
       width: MediaQuery.of(context).size.width,
-    //  margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+      //  margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Column(
           children: [
-               LightTextSubHead(data:'choose_profile_pic'.tr ,)  ,
+            LightTextSubHead(
+              data: 'choose_profile_pic'.tr,
+            ),
             const SizedBox(
               height: 5,
             ),
@@ -259,20 +254,28 @@ class _CreateProfileState extends State<CreateProfile> {
                     color: MyAppTheme.textWhite,
                   ),
                   onPressed: () {
+                    Get.back();
                     takePhoto(ImageSource.camera);
                   },
-                  label: LightTextBody(data: 'camera'.tr,),
+                  label: LightTextBody(
+                    data: 'camera'.tr,
+                  ),
+                ),
+                SizedBox(
+                  width: screenSize.width * 0.07,
                 ),
                 TextButton.icon(
                   icon: const Icon(
                     Icons.image,
                     color: MyAppTheme.textWhite,
-
                   ),
                   onPressed: () {
+                    Get.back();
                     takePhoto(ImageSource.gallery);
                   },
-                  label:  LightTextBody(data: 'gallery'.tr,),
+                  label: LightTextBody(
+                    data: 'gallery'.tr,
+                  ),
                 )
               ],
             )

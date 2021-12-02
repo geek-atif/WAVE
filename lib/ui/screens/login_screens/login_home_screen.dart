@@ -47,23 +47,22 @@ class _LoginScreenState extends State<LoginScreen> {
         backgroundColor: MyAppTheme.backgroundColor,
         body: Column(
           children: [
-
             SizedBox(
-              height: screenSize.height * 0.05,
+              height: screenSize.height * 0.10,
             ),
 
-             logo(),
-
+            logo(),
 
             SizedBox(
-              height: screenSize.height * 0.05,
+              height: screenSize.height * 0.02,
             ),
 
             SizedBox(
               height: 100,
               child: AppBar(
                 backgroundColor: MyAppTheme.backgroundColor,
-                bottom:   TabBar(
+                automaticallyImplyLeading: false,
+                bottom: TabBar(
                   indicatorColor: Colors.white,
                   indicatorWeight: 2,
                   indicatorSize: TabBarIndicatorSize.label,
@@ -75,7 +74,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                     Tab(
                       child: LightTextSubHead(
-                    data: 'signup_caps'.tr,
+                        data: 'signup_caps'.tr,
                       ),
                     ),
                   ],
@@ -98,7 +97,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   Container(
                     color: MyAppTheme.backgroundColor,
                     child: const Center(
-                      child:  SignUp(),
+                      child: SignUp(),
                     ),
                   ),
                 ],
@@ -124,5 +123,3 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 }
-
-

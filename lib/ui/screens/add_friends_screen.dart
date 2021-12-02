@@ -107,19 +107,22 @@ class _AddFriendsScreenState extends State<AddFriendsScreen> {
                 ],
               ),
             ),
-            CustomButton(
-              'continue'.tr,
-              54,
-              onPressed: () {
-                try {
-                  Get.toNamed(MyRouter.homeScreen);
-                } on Exception catch (e) {
-                  e.printError();
-                }
-              },
-            ),
+
+
+
+            InkWell(
+                onTap: (){
+                  try {
+                    Get.toNamed(MyRouter.homeScreen);
+                  } on Exception catch (e) {
+                    e.printError();
+                  }
+                },
+                child: CustomButton('continue'.tr,  )),
+
+
             SizedBox(
-              height: screenSize.height * 0.05,
+              height: screenSize.height * 0.08,
             ),
           ],
         ),

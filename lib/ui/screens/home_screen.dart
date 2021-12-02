@@ -28,6 +28,7 @@ class _HomeScreenState extends State<HomeScreen> {
     // TODO: implement initState
     super.initState();
     Utility.statusBarColor(MyAppTheme.backgroundColor);
+
   }
 
   void _onItemTapped(int index) {
@@ -35,7 +36,6 @@ class _HomeScreenState extends State<HomeScreen> {
       _selectedIndex = index;
     });
   }
-
   @override
   Widget build(BuildContext context) {
     final screenSize = MediaQuery.of(context).size;
@@ -45,6 +45,7 @@ class _HomeScreenState extends State<HomeScreen> {
         appBar: PreferredSize(
           preferredSize: const Size.fromHeight(80.0),
           child: AppBar(
+            backgroundColor: MyAppTheme.backgroundColor,
             automaticallyImplyLeading: false,
             flexibleSpace: Column(
               crossAxisAlignment: CrossAxisAlignment.center,

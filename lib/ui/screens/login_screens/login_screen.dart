@@ -5,11 +5,12 @@ import 'package:get/get_utils/src/extensions/dynamic_extensions.dart';
 import 'package:get/get_utils/src/extensions/internacionalization.dart';
 import 'package:wave/ui/routers/my_router.dart';
 import 'package:wave/ui/styles/my_app_theme.dart';
+import 'package:wave/ui/styles/my_images.dart';
 import 'package:wave/ui/widgets/custom_button.dart';
 import 'package:wave/ui/widgets/custom_checkbox.dart';
 import 'package:wave/ui/widgets/light_text_body.dart';
 import 'package:wave/ui/widgets/light_text_body_black.dart';
-import 'package:wave/utiles/constant.dart';
+
 
 
 
@@ -52,7 +53,8 @@ class _LoginState extends State<Login> {
             children: [
               Padding(
                 padding: const EdgeInsets.fromLTRB(20, 60, 20, 20),
-                child: TextFormField(
+                child:
+                TextFormField(
                   style: const TextStyle(
                       color: MyAppTheme.textColor,
                       fontWeight: FontWeight.normal,
@@ -63,10 +65,7 @@ class _LoginState extends State<Login> {
                     filled: true,
                     fillColor: MyAppTheme.textWhite,
                     hintText: 'user_email'.tr,
-                    prefixIcon: const Icon(
-                      Icons.email_outlined,
-                      color: MyAppTheme.textColor,
-                    ),
+                    prefixIcon:  Image.asset(MyImages.icMail),
                     focusedBorder: OutlineInputBorder(
                       borderSide: const BorderSide(color: MyAppTheme.textWhite),
                       borderRadius: BorderRadius.circular(15.0),
@@ -94,10 +93,7 @@ class _LoginState extends State<Login> {
                     filled: true,
                     fillColor: MyAppTheme.textWhite,
                     hintText: 'user_password'.tr,
-                    prefixIcon: const Icon(
-                      Icons.lock_outline,
-                      color: MyAppTheme.textColor,
-                    ),
+                    prefixIcon:  Image.asset(MyImages.icPadlock),
                     focusedBorder: OutlineInputBorder(
                       borderSide: const BorderSide(color: MyAppTheme.textWhite),
                       borderRadius: BorderRadius.circular(15.0),
@@ -144,9 +140,7 @@ class _LoginState extends State<Login> {
                   GestureDetector(
                     onTap: () {
                       try {
-                        //  Get.toNamed(MyRouter.forgotScreen);
-                        Navigator.pushNamed(context, MyRouter.forgotScreen);
-                        // Navigator.push(context, MaterialPageRoute(builder: (context) => ForgotPassword(),));
+                         Get.toNamed(MyRouter.forgotScreen);
                       } on Exception catch (e) {
                         e.printError();
                       }
@@ -157,13 +151,17 @@ class _LoginState extends State<Login> {
                   SizedBox(
                     height: screenSize.height * 0.03,
                   ),
-                  CustomButton(
-                   'user_login'.tr,
-                    54,
-                    onPressed: () {
-                      print('click me');
-                    },
-                  )
+                  InkWell(
+                      child: CustomButton('user_login'.tr, ),
+                      onTap: (){
+                        try {
+                          //Get.toNamed(MyRouter.addFriend);
+                        } on Exception catch (e) {
+                          e.printError();
+                        }
+                      },
+                     ),
+
                 ],
               )
             ],
