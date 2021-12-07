@@ -156,6 +156,7 @@ class _CreateProfileState extends State<CreateProfile> {
                                   fontWeight: FontWeight.normal,
                                   fontSize: 14),
                               obscureText: false,
+                              maxLength: 200,
                               decoration: InputDecoration(
                                 filled: true,
                                 fillColor: MyAppTheme.textWhite,

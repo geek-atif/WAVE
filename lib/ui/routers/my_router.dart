@@ -2,6 +2,7 @@ import 'package:get/get_navigation/src/routes/get_route.dart';
 import 'package:wave/ui/screens/about_us_screen/about_us_screen.dart';
 import 'package:wave/ui/screens/add_friends_screen.dart';
 import 'package:wave/ui/screens/create_profile_screen.dart';
+import 'package:wave/ui/screens/home_screens/home_details_screen.dart';
 import 'package:wave/ui/screens/login_screens/change_password_screen.dart';
 import 'package:wave/ui/screens/login_screens/forgotpassword_screen.dart';
 import 'package:wave/ui/screens/home_screen.dart';
@@ -18,6 +19,7 @@ class MyRouter {
   static var createProfile = "/createProfile";
   static var addFriend = "/addFriend";
   static var  changePsw = "/changePsw";
+  static var  homeDetailsScreen = "/homeDetailsScreen";
 
   static var route = [
     GetPage(name: '/', page: () => SplashScreen()),
@@ -29,6 +31,7 @@ class MyRouter {
     GetPage(name: MyRouter.createProfile, page: () => const CreateProfile()),
     GetPage(name: MyRouter.addFriend, page: () => const AddFriendsScreen()),
     GetPage(name: MyRouter.changePsw, page: () => const ChangePassword()),
+    GetPage(name: MyRouter.homeDetailsScreen, page: () => const HomeDetailsScreen()),
 
   ];
 }

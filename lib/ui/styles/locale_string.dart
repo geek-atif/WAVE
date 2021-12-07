@@ -49,7 +49,19 @@ class LocaleString extends Translations {
           'newPsw': 'New Password',
           'confirmNewPsw': 'Confirm New Password',
           'checkedBarName' :'Checked Bar Name',
-          'dateTime' :'12/02/21 2:00pm - 6:00pm'
+          'eventType' :'Event Type',
+          'dateTime' :'12/02/21',
+          'duration' :'2:00pm - 8:00pm',
+          'seeLocation' :'See Location',
+          'checkIn' :'Check- In',
+          'comments' :'COMMENTS',
+          'leaveComment' :'Leave a Comment',
+          'likes' :'Likes',
+          'reply' :'Reply',
+          'view' :'View',
+          'replies' :'Replies',
+          'submit' :'Submit',
+          'yourComment' :'Your Comment...',
 
 
         },
